@@ -1,0 +1,368 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+  display: grid;
+  background-color: #fff;
+  color: #444444;
+  grid-template-rows: auto;
+  grid-template-areas: "header header header" "nav nav nav" "main main main";
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  background-color: #7b80be;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  color: #fff;
+  font-weight: 100;
+}
+header h1 strong {
+  font-weight: 700;
+}
+header h1 sup {
+  font-size: 0.9rem;
+}
+header .bell {
+  fill: #fff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  grid-area: nav;
+  display: flex;
+  background-color: #35396b;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+nav svg {
+  display: inline-block;
+  height: 2rem;
+  fill: #bfbfbf;
+  transition: fill 0.5s;
+}
+nav svg:hover {
+  fill: #fff;
+  cursor: pointer;
+}
+nav svg:active {
+  fill: #fff;
+}
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard input {
+  border-radius: 4px;
+  height: 2.8rem;
+  width: 18rem;
+  border: none;
+  outline: none;
+}
+
+.search-wrap {
+  width: 85%;
+  height: 3.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #e4d2d2;
+  border-left: #bbb 0.2px solid;
+  border-bottom: #bbb 0.2px solid;
+  border-radius: 0 0 0 4px;
+}
+
+.alert {
+  background-color: #7b80be;
+  display: flex;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 100;
+}
+.alert span {
+  font-weight: 900;
+}
+.alert button {
+  border: none;
+  outline: none;
+  background-color: #7b80be;
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.5s;
+}
+.alert button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.chart-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.social-stats-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.social-stats-group svg {
+  display: inline-block;
+  fill: #fff;
+  height: 2rem;
+}
+.social-stats-group .google, .social-stats-group .facebook, .social-stats-group .twitter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: #bbb 0.2px solid;
+  border-radius: 4px;
+  width: 226px;
+}
+.social-stats-group .google h3, .social-stats-group .facebook h3, .social-stats-group .twitter h3 {
+  margin-top: 1rem;
+  color: #7b80be;
+}
+.social-stats-group .google p, .social-stats-group .facebook p, .social-stats-group .twitter p {
+  font-size: 2.1rem;
+}
+.social-stats-group .bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: #7b80be;
+  text-align: center;
+  margin: 1rem;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user a {
+  text-decoration: none;
+  color: #7b80be;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+}
+
+.user img {
+  display: block;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.membership-activity {
+  height: 100%;
+}
+.membership-activity > div {
+  width: 100%;
+}
+
+.user-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+.message-user button {
+  background-color: #7b80be;
+  color: #fff;
+  outline: none;
+  border: none;
+  height: 2.8rem;
+}
+
+.message-user input,
+.message-user textarea {
+  width: 95%;
+  margin: 0.5rem 0;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+}
+
+.message-user input {
+  height: 2.8rem;
+}
+
+.settings {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.settings ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.settings ul li {
+  list-style: none;
+  padding: 1.4rem 0;
+}
+.settings select {
+  height: 2.8rem;
+  width: 95%;
+  outline: none;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.setting-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.save,
+.cancel,
+.message-user button {
+  color: #fff;
+  outline: none;
+  border: none;
+  height: 2.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save {
+  background-color: #7b80be;
+  width: 40%;
+}
+
+.cancel {
+  background-color: #bbb;
+  width: 40%;
+}
+
+.traffic,
+.daily-traffic,
+.chart-group,
+.social-stats-group,
+.new-members,
+.recent-activity,
+.message-user {
+  border-bottom: solid 1px #bbb;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-areas: "header header header" "nav main main";
+  }
+
+  nav {
+    flex-direction: column;
+    justify-content: start;
+    min-width: 10vw;
+    max-width: 80px;
+  }
+
+  .social-stats-group {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .user-controls {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .user-controls > div {
+    width: 50%;
+  }
+
+  .message-user {
+    display: flex;
+    border-bottom: none;
+    border-right: solid 1px #bbb;
+  }
+
+  .message-user input,
+.message-user textarea,
+.message-user button {
+    width: 40vw;
+  }
+}
+@media (min-width: 1024px) {
+  .chart-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .daily-traffic {
+    width: 50%;
+    border-right: solid 1px #bbb;
+    border-bottom: none;
+  }
+
+  .mobile-users {
+    width: 50%;
+  }
+
+  .membership-activity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: solid 1px #bbb;
+  }
+  .membership-activity > div {
+    width: 50%;
+  }
+
+  .new-members,
+.recent-activity,
+.message-user,
+.settings {
+    border-bottom: none;
+  }
+
+  .new-members,
+.message-user {
+    border-right: solid 1px #bbb;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
