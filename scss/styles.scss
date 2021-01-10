@@ -40,7 +40,7 @@ header{
         font-weight: 100;
         
         strong{
-            font-weight: 700;
+            font-weight: 900;
         }
         
         sup{
@@ -49,13 +49,30 @@ header{
     }
 
     .bell{
+        display: block;
         fill: $color-light;
+        height: 2.7rem;
+        border-right: solid 1px $color-dark;
     }
 }
 
 .user-info{
     display: flex;
     align-items: center;
+}
+
+.profile-picture{
+    display: block;
+    height: 3rem;
+    border-radius: 50%;
+    // margin: 0.5rem 1rem 0.5rem 0;
+    // margin-right: 2rem;
+}
+
+.user-info .username {
+    text-decoration: none;
+    color: $color-light;
+    font-weight: 600;
 }
 
 nav{
@@ -93,10 +110,10 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    overflow: hidden;
 }
 
-.dashboard{
+#dashboard{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -159,19 +176,43 @@ main{
     }
 }
 
+.traffic{
+    width: 100vw;
+    padding: 1rem;
+}
+#traffic-chart{
+    // padding: 0 2rem;
+}
+
+.traffic ul{
+    display: flex;
+    list-style: none;
+}
+
+.active {
+    background-color: green;
+}
+
 .chart-group{
     display: flex;
     flex-direction: column;
     // margin-right: 2rem;
-    width: 100%;
+    // width: 100vw;
 }
 
 .daily-traffic {
-
+    width: 100vw;
+}
+#daily-traffic-chart{
+    // padding: 0 2rem;
 }
 
 .mobile-users {
+    width: 100vw;
+}
 
+#mobile-user-chart{
+    // padding: 0 2rem;
 }
 
 .social-stats-group{
@@ -242,6 +283,10 @@ main{
     height: 5rem;
 }
 
+.username{
+    font-weight: 600;
+}
+
 .user img{
     display: block;
     height: 3rem;
@@ -279,7 +324,8 @@ main{
         color: $color-light;
         outline: none;
         border: none;
-        height: 2.8rem
+        height: 2.8rem;
+        width: 95%;
         
     }
 }
@@ -318,6 +364,9 @@ main{
         & li {
             list-style: none;
             padding: 1.4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 
@@ -329,6 +378,80 @@ main{
         border-radius: $border-radius;
     }
 }
+
+// Slider Styles
+
+label {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80px;
+    height:30px;
+    cursor: pointer;
+    // margin-right: 30px;
+}
+
+label p {
+    z-index: 5;
+    color: $color-light;
+    font-weight: 600;
+}
+
+label input{
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0; right: 0px; bottom: 0; left: 0px;
+    background-color: $color-dark
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    top: 3px; bottom: 1px; left: 5px;
+    background-color: $color-light;
+    transition: transform 0.5s;
+}
+
+input:checked + .slider {
+    background-color: $primary-color-light
+}
+
+.on {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.off {
+    transition: opacity 0.5s;
+}
+
+input:checked ~ .off{
+    opacity: 0;
+}
+
+input:checked ~ .on{
+    opacity: 1;
+}
+
+input:checked + .slider:before {
+    transform: translateX(46px);
+}
+
+.slider.round {
+    border-radius: 35px;
+}
+
+.slider.round:before {
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+}
+
+// Slider Styles End
 
 .setting-controls {
     width: 100%;
@@ -345,6 +468,7 @@ main{
     height: 2.8rem;
     border-radius: $border-radius;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .save {
@@ -367,7 +491,6 @@ main{
     border-bottom: solid 1px $color-mid
 }
 
-
 @media (min-width: 768px){
     .wrapper {
         grid-template-areas: 
@@ -378,8 +501,19 @@ main{
     nav {
         flex-direction: column;
         justify-content: start;
-        min-width: 10vw;
-        max-width: 80px;
+        width: 5rem;
+    }
+
+    .traffic {
+        width: calc(100vw - 5rem);
+    }
+
+    .daily-traffic {
+        width: calc(100vw - 5rem);
+    }
+    
+    .mobile-users {
+        width: calc(100vw - 5rem);
     }
 
     .social-stats-group{
@@ -414,7 +548,7 @@ main{
     .message-user input,
     .message-user textarea,
     .message-user button {
-        width: 40vw;
+        width: 95%;
     }
 
 }
@@ -427,13 +561,13 @@ main{
     }
 
     .daily-traffic {
-        width: 50%;
+        width: calc(50vw - 2.5rem);
         border-right: solid 1px $color-mid;
         border-bottom: none;
     }
 
     .mobile-users {
-        width: 50%;
+        width: calc(50vw - 2.5rem);
     }
 
     .membership-activity {

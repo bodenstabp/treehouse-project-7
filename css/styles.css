@@ -26,18 +26,33 @@ header h1 {
   font-weight: 100;
 }
 header h1 strong {
-  font-weight: 700;
+  font-weight: 900;
 }
 header h1 sup {
   font-size: 0.9rem;
 }
 header .bell {
+  display: block;
   fill: #fff;
+  height: 2.7rem;
+  border-right: solid 1px #444444;
 }
 
 .user-info {
   display: flex;
   align-items: center;
+}
+
+.profile-picture {
+  display: block;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.user-info .username {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
 }
 
 nav {
@@ -67,14 +82,15 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
-.dashboard {
+#dashboard {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.dashboard input {
+#dashboard input {
   border-radius: 4px;
   height: 2.8rem;
   width: 18rem;
@@ -117,10 +133,31 @@ main {
   transform: scale(1.2);
 }
 
+.traffic {
+  width: 100vw;
+  padding: 1rem;
+}
+
+.traffic ul {
+  display: flex;
+  list-style: none;
+}
+
+.active {
+  background-color: green;
+}
+
 .chart-group {
   display: flex;
   flex-direction: column;
-  width: 100%;
+}
+
+.daily-traffic {
+  width: 100vw;
+}
+
+.mobile-users {
+  width: 100vw;
 }
 
 .social-stats-group {
@@ -177,6 +214,10 @@ main {
   height: 5rem;
 }
 
+.username {
+  font-weight: 600;
+}
+
 .user img {
   display: block;
   height: 3rem;
@@ -209,6 +250,7 @@ main {
   outline: none;
   border: none;
   height: 2.8rem;
+  width: 95%;
 }
 
 .message-user input,
@@ -243,6 +285,9 @@ main {
 .settings ul li {
   list-style: none;
   padding: 1.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .settings select {
   height: 2.8rem;
@@ -250,6 +295,80 @@ main {
   outline: none;
   border: 1px solid #bbb;
   border-radius: 4px;
+}
+
+label {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+label p {
+  z-index: 5;
+  color: #fff;
+  font-weight: 600;
+}
+
+label input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  left: 0px;
+  background-color: #444444;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 1px;
+  left: 5px;
+  background-color: #fff;
+  transition: transform 0.5s;
+}
+
+input:checked + .slider {
+  background-color: #7b80be;
+}
+
+.on {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.off {
+  transition: opacity 0.5s;
+}
+
+input:checked ~ .off {
+  opacity: 0;
+}
+
+input:checked ~ .on {
+  opacity: 1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(46px);
+}
+
+.slider.round {
+  border-radius: 35px;
+}
+
+.slider.round:before {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
 }
 
 .setting-controls {
@@ -267,6 +386,7 @@ main {
   height: 2.8rem;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .save {
@@ -297,8 +417,19 @@ main {
   nav {
     flex-direction: column;
     justify-content: start;
-    min-width: 10vw;
-    max-width: 80px;
+    width: 5rem;
+  }
+
+  .traffic {
+    width: calc(100vw - 5rem);
+  }
+
+  .daily-traffic {
+    width: calc(100vw - 5rem);
+  }
+
+  .mobile-users {
+    width: calc(100vw - 5rem);
   }
 
   .social-stats-group {
@@ -323,7 +454,7 @@ main {
   .message-user input,
 .message-user textarea,
 .message-user button {
-    width: 40vw;
+    width: 95%;
   }
 }
 @media (min-width: 1024px) {
@@ -333,13 +464,13 @@ main {
   }
 
   .daily-traffic {
-    width: 50%;
+    width: calc(50vw - 2.5rem);
     border-right: solid 1px #bbb;
     border-bottom: none;
   }
 
   .mobile-users {
-    width: 50%;
+    width: calc(50vw - 2.5rem);
   }
 
   .membership-activity {
