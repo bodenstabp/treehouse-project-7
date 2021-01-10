@@ -33,7 +33,7 @@ const hourlyOptions = {
         yAxes: [{
             ticks: {
                 min: 0,
-                max: 100,
+                max: 60,
             }
         }]
     }
@@ -144,7 +144,7 @@ let initTrafficChart = new Chart(trafficChart, {
 //Traffic Chart Controller
 
 trafficNav[0].addEventListener('click', event => {
-    if (!event.target.classList.contains('active')){
+    if (!event.target.classList.contains('active') &&event.target !== trafficNav[0]){
         for(i = 0; i < 4; i++) {
             if(trafficNavLink[i].classList.contains('active')){
                 trafficNavLink[i].classList.remove('active')
@@ -153,29 +153,21 @@ trafficNav[0].addEventListener('click', event => {
         }
     }
     if (trafficNavLink[0].classList.contains('active')){
-        initTrafficChart = new Chart(trafficChart, {
-            type: 'line',
-            data: hourlyData,
-            options: hourlyOptions
-        });
+        initTrafficChart.config.data = hourlyData;
+        initTrafficChart.options = hourlyOptions;
+        initTrafficChart.update();
     } else if (trafficNavLink[1].classList.contains('active')) {
-        initTrafficChart = new Chart(trafficChart, {
-            type: 'line',
-            data: dailyData,
-            options: dailyOptions
-        });
+        initTrafficChart.config.data = dailyData;
+        initTrafficChart.options = dailyOptions;
+        initTrafficChart.update();
     } else if (trafficNavLink[2].classList.contains('active')) {
-        initTrafficChart = new Chart(trafficChart, {
-            type: 'line',
-            data: weeklyData,
-            options: weeklyOptions
-        });
+        initTrafficChart.config.data = weeklyData;
+        initTrafficChart.options = weeklyOptions;
+        initTrafficChart.update();
     } else if (trafficNavLink[3].classList.contains('active')) {
-        initTrafficChart = new Chart(trafficChart, {
-            type: 'line',
-            data: monthlyData,
-            options: monthlyOptions
-        });
+        initTrafficChart.config.data = monthlyData;
+        initTrafficChart.options = monthlyOptions;
+        initTrafficChart.update();
     }
 })
 
