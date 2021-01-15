@@ -33,7 +33,7 @@ const hourlyOptions = {
         yAxes: [{
             ticks: {
                 min: 0,
-                max: 60,
+                max: 50,
             }
         }]
     }
@@ -58,7 +58,7 @@ const dailyOptions = {
         xAxes:[{
             // offset: true,
             gridLines:{
-            offsetGridLines: true,    
+            // offsetGridLines: true,    
         }
         }],   
         yAxes: [{
@@ -120,7 +120,7 @@ const monthlyOptions = {
         xAxes:[{
             // offset: true,
             gridLines:{
-            offsetGridLines: true,    
+            // offsetGridLines: true,    
         }
         }],
         
@@ -230,7 +230,7 @@ let initMobileUserChart = new Chart(mobileUserChart, {
     }
 })
 
-// Messdage User Controls
+// Message User Controls
 send.addEventListener('click', () => {
     if(user.value === '' && message.value === ''){
         alert('Please fill out user and message fields before sending');
