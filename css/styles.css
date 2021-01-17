@@ -34,16 +34,20 @@ header h1 strong {
 header h1 sup {
   font-size: 0.9rem;
 }
+header .notification-bell {
+  border-right: solid 1px #444444;
+}
 header .bell {
   display: block;
   fill: #fff;
   height: 2.8rem;
   padding: 0 0.5rem;
-  border-right: solid 1px #444444;
+  transition: transform 1s cubic-bezier(0.35, -1.48, 0.53, 1.51);
 }
 header .alert-indicator {
   height: 0.8rem;
   width: 0.8rem;
+  display: block;
   border-radius: 50px;
   font-size: 30rem;
   background-color: #6eb676;
@@ -51,6 +55,9 @@ header .alert-indicator {
   position: absolute;
   right: 80%;
   bottom: 8px;
+}
+header .bell:hover {
+  transform: rotate(-10deg);
 }
 
 .user-info {
@@ -133,13 +140,14 @@ main {
 
 .alert {
   background-color: #7b80be;
-  padding: 1rem;
+  padding: 1rem 2rem 1rem 1rem;
   margin: 0 1rem 0;
   display: flex;
   color: #fff;
   border-radius: 4px;
   font-weight: 500;
   display: none;
+  position: relative;
 }
 .alert span {
   font-weight: 900;
@@ -152,10 +160,17 @@ main {
   color: #fff;
   font-size: 1.5rem;
   transition: transform 0.5s;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .alert button:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+.alert:nth-child(odd) {
+  margin-top: 1rem;
 }
 
 .traffic {
@@ -296,6 +311,7 @@ h2 {
 .message-user textarea {
   width: 90%;
   margin: 0.5rem 0;
+  padding-left: 0.5rem;
   outline: none;
   align-self: center;
   border: 1px solid #bbb;
@@ -305,6 +321,10 @@ h2 {
 
 .message-user input {
   height: 2.8rem;
+}
+
+.message-user textarea {
+  padding-top: 0.75rem;
 }
 
 .message-user button {
@@ -540,7 +560,7 @@ input:checked + .slider:before {
 
   .message-user,
 .settings {
-    height: 430px;
+    height: 443px;
     padding-bottom: 4rem;
   }
 

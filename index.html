@@ -111,7 +111,11 @@
                 </div>
             </section>
             <section class="alert">
-                <p><span class = "alert-title">Alert:</span> ipsum dolor sit amet consectetur adipisicing elit. Eligendi obcaecati mollitia possimus officia rem maxime eius ratione incidunt odio facilis?</p> <button>x</button>
+                <p><span class = "alert-title">Alert:</span> ipsum dolor sit amet consectetur adipisicing elit. Eligendi obcaecati mollitia possimus officia rem maxime eius ratione incidunt odio facilis?</p> <button class = "close">x</button>
+            </section>
+
+            <section class="alert">
+                <p><span class = "alert-title">Alert:</span> ipsum dolor sit amet consectetur adipisicing elit. Eligendi obcaecati mollitia possimus officia rem maxime eius ratione incidunt odio facilis?</p> <button class = "close">x</button>
             </section>
             <section class="traffic" id= "traffic">
                 <h2>TRAFFIC</h2>
@@ -288,7 +292,21 @@
             <section class="user-controls" id = "user-controls">
                 <div class="message-user">
                     <h2>MESSAGE USER</h2>
-                    <input type="search" placeholder = "Search for User" id= "userField">
+                    <input type="search" placeholder = "Search for User" id= "userField" list="usernames">
+                    <datalist id = "usernames">
+                        <option value="Thomas Greene"></option>
+                        <option value="Betty Michaels"></option>
+                        <option value="Kelly Smith"></option>
+                        <option value="John Woods"></option>
+                        <option value="Valerie Chambers"></option>
+                        <option value="Tom Arnold"></option>
+                        <option value="William Hardy"></option>
+                        <option value="Greg Thompson"></option>
+                        <option value="Jane Saunders"></option>
+                        <option value="Sarah Williams"></option>
+                        <option value="Susan Snell"></option>
+                        <option value="Paul Bodenstab"></option>
+                    </datalist>
                     <textarea placeholder = "Message for User" id="messageField" cols="30" rows="10"></textarea>
                     <button type="submit" id= "send">SEND</button>
                 </div>
@@ -297,7 +315,7 @@
                     <ul>
                         <li>Send Email Notifications
                             <label>
-                                <input type="checkbox">
+                                <input type="checkbox" id= "email-checkbox">
                                 <span class = "slider round"></span>
                                 <p class = "on">ON</p>
                                 <p class = "off">OFF</p>
@@ -305,7 +323,7 @@
                         </li>
                         <li>Set Profile to Public 
                             <label>
-                                <input type="checkbox">
+                                <input type="checkbox" id= "profile-checkbox">
                                 <span class = "slider round"></span>
                                 <p class = "on">ON</p>
                                 <p class = "off">OFF</p>
@@ -324,8 +342,8 @@
                         </select>
                     </ul>
                     <div class="setting-controls">
-                        <button class="save">SAVE</button>
-                        <button type = "reset" class = "cancel">CANCEL</button>
+                        <button class="save" id = "save">SAVE</button>
+                        <button type = "reset" class = "cancel" id = "cancel">CANCEL</button>
                     </div>
                 </div>
             </section>

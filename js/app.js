@@ -1,11 +1,43 @@
-const trafficChart = document.getElementById('traffic-chart').getContext('2d')
+const alertBubble = document.getElementsByClassName('alert');
+const alertIndicator = document.getElementsByClassName('alert-indicator')[0];
+const bellIcon = document.getElementsByClassName('notification-bell')[0]
+const alertClose = document.getElementsByClassName('close')
+
+const trafficChart = document.getElementById('traffic-chart').getContext('2d');
+const trafficNav = document.getElementsByClassName('traffic-nav');
+const trafficNavLink = document.getElementsByClassName('traffic-nav-link');
 const dailyTrafficChart = document.getElementById('daily-traffic-chart').getContext('2d');
 const mobileUserChart = document.getElementById('mobile-user-chart').getContext('2d');
+
 const user = document.getElementById('userField');
 const message = document.getElementById('messageField');
 const send = document.getElementById('send');
-const trafficNav = document.getElementsByClassName('traffic-nav')
-const trafficNavLink = document.getElementsByClassName('traffic-nav-link');
+
+const emailCheckbox = document.getElementById('email-checkbox');
+const profileCheckbox = document.getElementById('profile-checkbox');
+const timezone = document.getElementById('timezone');
+const saveSettings = document.getElementById('save');
+const cancelSettings = document.getElementById('cancel');
+//Notification Bell and Alert Controls
+
+bellIcon.addEventListener('click', ()=> {
+    if (alertIndicator.style.display !== 'none'){
+        alertBubble[0].style.display = 'block';
+        alertBubble[1].style.display = 'block';
+        alertIndicator.style.display = 'none';
+    }
+  
+})
+
+alertClose[0].addEventListener('click', () => {
+    alertBubble[0].style.display = 'none';
+})
+
+alertClose[1].addEventListener('click', () => {
+    alertBubble[1].style.display = 'none';
+})
+
+//Traffic Chart Data
 
 const hourlyData = {
     labels: ['12-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9','9-10','10-11','11-12', '12-1', '1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9','9-10','10-11','11-12',],
@@ -17,7 +49,7 @@ const hourlyData = {
         borderWidth: 2,
         lineTension: 0,
     }]
-}
+};
 const hourlyOptions = {
     aspectRatio: 2.5,
     legend: {
@@ -37,7 +69,7 @@ const hourlyOptions = {
             }
         }]
     }
-}
+};
 const dailyData = {
     labels: ['S', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
     datasets: [{
@@ -48,7 +80,7 @@ const dailyData = {
         borderWidth: 2,
         lineTension: 0,
     }]
-}
+};
 const dailyOptions = {
     aspectRatio: 2.5,
     legend: {
@@ -68,7 +100,7 @@ const dailyOptions = {
             }
         }]
     }
-}
+};
 const weeklyData = {
     labels: ['16-22', '23-29', '30-5', '6-12', '13-19', '20-26', '27-3', '4-10', '11-17', '18-24', '25-31'],
     datasets: [{
@@ -79,7 +111,7 @@ const weeklyData = {
         borderWidth: 2,
         lineTension: 0,
     }]
-}
+};
 const weeklyOptions = {
     aspectRatio: 2.5,
     legend: {
@@ -99,7 +131,7 @@ const weeklyOptions = {
             }
         }]
     }
-}
+};
 const monthlyData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [{
@@ -110,7 +142,7 @@ const monthlyData = {
         borderWidth: 2,
         lineTension: 0,
     }]
-}
+};
 const monthlyOptions = {
     aspectRatio: 2.5,
     legend: {
@@ -131,7 +163,7 @@ const monthlyOptions = {
             }
         }]
     }
-}
+};
 
 // Traffic Chart
 
@@ -169,7 +201,7 @@ trafficNav[0].addEventListener('click', event => {
         initTrafficChart.options = monthlyOptions;
         initTrafficChart.update();
     }
-})
+});
 
 
 
@@ -202,7 +234,7 @@ let initDailyTrafficChart = new Chart(dailyTrafficChart, {
             }]
         }
     }
-})
+});
 
 // Mobile User Chart
 
@@ -228,7 +260,7 @@ let initMobileUserChart = new Chart(mobileUserChart, {
             }
         }
     }
-})
+});
 
 // Message User Controls
 send.addEventListener('click', () => {
@@ -241,5 +273,39 @@ send.addEventListener('click', () => {
     } else {
         alert(`Message has been succesfully sent to ${user.value}`)
     }
-})
+});
+
+// Local Storageg Controls
+
+saveSettings.addEventListener('click', () => {
+    localStorage.setItem('emailCheck', emailCheckbox.checked);
+    localStorage.setItem('profileCheck', profileCheckbox.checked);
+    localStorage.setItem('timezone', timezone.value)
+});
+
+if(window.localStorage.getItem('emailCheck') === 'true') {
+    emailCheckbox.checked = true;
+} else {
+    emailCheckbox.checked = false;
+}
+
+if(window.localStorage.getItem('profileCheck') === 'true') {
+    profileCheckbox.checked = true;
+} else {
+    profileCheckbox.checked = false;
+}
+
+if(window.localStorage.getItem('timezone' !== null)) {
+    timezone.value = window.localStorage.getItem('timezone');
+}
+
+cancelSettings.addEventListener('click', () => {
+    localStorage.clear();
+    emailCheckbox.checked = false;
+    profileCheckbox.checked = false;
+    timezone.value = null;
+});
+
+
+
 
