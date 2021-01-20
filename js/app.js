@@ -1,7 +1,9 @@
 const alertBubble = document.getElementsByClassName('alert');
-const alertIndicator = document.getElementsByClassName('alert-indicator')[0];
-const bellIcon = document.getElementsByClassName('notification-bell')[0]
-const alertClose = document.getElementsByClassName('close')
+const notificationIndicator = document.getElementsByClassName('alert-indicator')[0];
+const bellIcon = document.getElementsByClassName('notification-bell')[0];
+const alertClose = document.getElementsByClassName('close');
+const dropdown = document.getElementsByClassName('dropdown')[0];
+const dropdownClose = document.getElementsByClassName('dropdown-close')[0]
 
 const trafficChart = document.getElementById('traffic-chart').getContext('2d');
 const trafficNav = document.getElementsByClassName('traffic-nav');
@@ -18,23 +20,23 @@ const profileCheckbox = document.getElementById('profile-checkbox');
 const timezone = document.getElementById('timezone');
 const saveSettings = document.getElementById('save');
 const cancelSettings = document.getElementById('cancel');
+
 //Notification Bell and Alert Controls
 
-bellIcon.addEventListener('click', ()=> {
-    if (alertIndicator.style.display !== 'none'){
-        alertBubble[0].style.display = 'block';
-        alertBubble[1].style.display = 'block';
-        alertIndicator.style.display = 'none';
+bellIcon.addEventListener('click', () => {
+    
+    if(dropdown.style.display = 'none'){
+        dropdown.style.display = 'block';
     }
-  
+    notificationIndicator.style.display = 'none';
+})
+
+dropdownClose.addEventListener('click', () => {
+    dropdown.style.display = 'none';
 })
 
 alertClose[0].addEventListener('click', () => {
     alertBubble[0].style.display = 'none';
-})
-
-alertClose[1].addEventListener('click', () => {
-    alertBubble[1].style.display = 'none';
 })
 
 //Traffic Chart Data
@@ -281,6 +283,7 @@ saveSettings.addEventListener('click', () => {
     localStorage.setItem('emailCheck', emailCheckbox.checked);
     localStorage.setItem('profileCheck', profileCheckbox.checked);
     localStorage.setItem('timezone', timezone.value)
+    alert('Your settings have been updated.')
 });
 
 if(window.localStorage.getItem('emailCheck') === 'true') {
@@ -295,7 +298,7 @@ if(window.localStorage.getItem('profileCheck') === 'true') {
     profileCheckbox.checked = false;
 }
 
-if(window.localStorage.getItem('timezone' !== null)) {
+if(localStorage.getItem('timezone') !== null) {
     timezone.value = window.localStorage.getItem('timezone');
 }
 

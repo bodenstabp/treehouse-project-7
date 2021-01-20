@@ -80,6 +80,60 @@ header .bell:hover {
   padding-right: 0.25rem;
 }
 
+.dropdown {
+  position: absolute;
+  right: 3%;
+  top: 14vh;
+  background-color: #eee;
+  z-index: 5;
+  border: solid 2px #bbb;
+  border-radius: 20px;
+  display: none;
+}
+
+.dropdown-header {
+  border-bottom: solid 1px #bbb;
+  padding: 1rem 1rem 0.5rem 1.5rem;
+  background-color: #ddd;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-close {
+  border-radius: 20px;
+  padding: 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  outline: none;
+}
+
+.dropdown-header::before {
+  content: "";
+  background: #ddd;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  top: -10px;
+  right: 208px;
+  transform: rotate(45deg);
+  border-top: solid 2px #bbb;
+  border-left: solid 2px #bbb;
+}
+
+.dropdown-user {
+  text-decoration: none;
+  color: #7b80be;
+}
+
+.dropdown-item {
+  padding: 1.5rem;
+}
+
+.dropdown div:not(:last-of-type) {
+  border-bottom: 1px solid #bbb;
+}
+
 nav {
   grid-area: nav;
   display: flex;
@@ -146,7 +200,6 @@ main {
   color: #fff;
   border-radius: 4px;
   font-weight: 500;
-  display: none;
   position: relative;
 }
 .alert span {
@@ -167,10 +220,6 @@ main {
 .alert button:hover {
   cursor: pointer;
   transform: scale(1.2);
-}
-
-.alert:nth-child(odd) {
-  margin-top: 1rem;
 }
 
 .traffic {
@@ -274,6 +323,10 @@ h2 {
 .user a {
   text-decoration: none;
   color: #7b80be;
+}
+
+.user-email {
+  font-size: 0.8remrem;
 }
 
 .user-container {
