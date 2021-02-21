@@ -24,7 +24,8 @@ $border-radius: 4px;
     grid-template-areas: 
         "header header header" 
         "nav nav nav"
-        "main main main"
+        "main main main";
+
 }
 
 header{
@@ -114,6 +115,7 @@ header{
     border-radius: 20px;
     display: none;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0, 0.2);
+    border: solid 2px $color-light;
 }
 
 .dropdown-header{
@@ -130,10 +132,10 @@ header{
     height: 1rem;
     width: 1rem;
     position: absolute;
-    top: -5px; right: 195px;
+    top: -10px; right: 195px;
     transform: rotate(45deg);
-    // border-top: solid 2px $color-mid;
-    // border-left: solid 2px $color-mid;
+    border-top: solid 2px $color-light;
+    border-left: solid 2px $color-light;
 }
 
 .dropdown-close{
@@ -174,8 +176,10 @@ nav{
     background-color: $primary-color-dark;
     justify-content: space-evenly;
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     align-items: center;
+    position: sticky;
+    top: 0;
 
     & svg{
         display: inline-block;
@@ -198,11 +202,11 @@ nav{
 
 main{
     grid-area: main;
-    // padding: 0 0 0.5rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    max-width: 1920px;
 }
 
 #dashboard{
@@ -215,6 +219,7 @@ main{
         height: 2.8rem;
         width: 18rem;
         padding-left: 0.5rem;
+        margin-right: 0.5rem;
         border: none;
         outline: none;
     }
@@ -230,7 +235,6 @@ main{
     background-color: $color-tan;
     border-left: $color-mid 0.2px solid;
     border-bottom: $color-mid 0.2px solid;
-
     border-radius: 0 0 0 $border-radius;
 }
 
@@ -268,6 +272,7 @@ main{
 
 .traffic{
     width: 100vw;
+    max-width: 1920px;
 }
 #traffic-chart,
 #daily-traffic-chart,
@@ -395,15 +400,12 @@ h2{
     display: block;
     height: 3rem;
     border-radius: 50%;
-    // margin: 0.5rem 1rem 0.5rem 0;
-    // margin-right: 2rem;
 }
 
 .user-controls{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    // margin-right: 2rem;
 }
 
 .message-user {
@@ -493,7 +495,6 @@ label {
     width: 80px;
     height:30px;
     cursor: pointer;
-    // margin-right: 30px;
 }
 
 label p {
@@ -575,6 +576,7 @@ input:checked + .slider:before {
     cursor: pointer;
     font-weight: 600;
     transition: 0.3s;
+    font-family: inherit;
 }
 
 .save:hover,
