@@ -742,10 +742,6 @@ input:checked + .slider:before {
         }
     }
 
-    .recent-activity {
-        // margin-right: 2rem;
-    }
-
     .new-members,
     .recent-activity,
     .message-user,
@@ -756,6 +752,5 @@ input:checked + .slider:before {
     .new-members,
     .message-user {
         border-right: solid 1px $color-mid;
-        // padding-right: 1rem;
     }
 }

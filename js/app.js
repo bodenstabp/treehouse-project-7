@@ -277,7 +277,7 @@ send.addEventListener('click', () => {
     }
 });
 
-// Local Storageg Controls
+// Local Storage Controls
 
 saveSettings.addEventListener('click', () => {
     localStorage.setItem('emailCheck', emailCheckbox.checked);
